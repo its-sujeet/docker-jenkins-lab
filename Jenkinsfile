@@ -10,19 +10,19 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/its-sujeet/docker-jenkins-lab.git'
+                git branch: 'main', url: 'https://github.com/its-sujeet/docker-jenkins-lab.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %IMAGE_NAME% .'
+                sh 'docker build -t ${IMAGE_NAME} .'
             }
         }
 
         stage('Show Docker Images') {
             steps {
-                bat 'docker images'
+                sh 'docker images'
             }
         }
     }
